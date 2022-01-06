@@ -22,4 +22,20 @@ public class ReqResTest {
 
         System.out.println(response);
     }
+    @Test
+    public void registerTest(){
+        String response = RestAssured
+                .given()
+                .contentType(ContentType.JSON)
+                .body("{\n" +
+                        "    \"email\": \"eve.holt@reqres.in\",\n" +
+                        "    \"password\": \"pistol\"\n" +
+                        "}")
+                .post("https://reqres.in/api/register")
+                .then()
+                .extract()
+                .asString();
+
+        System.out.println(response);
+    }
 }
